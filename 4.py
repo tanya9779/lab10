@@ -1,12 +1,12 @@
 en_ru=dict()
-in_f = open('en-ru.txt', 'r')
+in_f=open('en-ru.txt')
 s=in_f.readline().rstrip()
 while len(s)>0:
     en,ru=list(s.split('\t-\t'))
     en_ru[en]=ru
     s=in_f.readline().rstrip()
 
-in_f = open('input.txt')
+in_f=open('input.txt')
 out_f=open('output.txt','w')
 s=in_f.readline().rstrip()
 while len(s)>0:
@@ -14,10 +14,11 @@ while len(s)>0:
     ru=''
     for i in en:
         if i.lower().replace('.','') in en_ru:
-            ru+=''+en_ru[i.lower().replace('.','')]
+            ru+=' '+en_ru[i.lower().replace('.','')]
         else:
             ru+=' '+i
-            
-    print(s,file=out_f)
-print(ru.lstrip(),file=out_f)
+
+    print(s,file=out_f) # исходная строка
+    print(ru.lstrip(),file=out_f) # подстрочный перевод
+
     s=in_f.readline().rstrip()
